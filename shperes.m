@@ -9,6 +9,8 @@ grid on;
 axis vis3d;
 format long
 axis([-15, 15, -15, 15, -15, 15])
+%axis off
+%format long;
 
 resolution = 50;
 
@@ -24,8 +26,13 @@ s_x = (s_x.*2)+10;
 s_y = (s_y.*2);
 s_z = (s_z.*2);
 saturn_sphere_texture = flipud(imresize(im2double(imread('saturn-sphere.jpg')),size(s_x)));
-saturn = surf(s_x, s_y, s_z, saturn_sphere_texture)
-saturn.EdgeColor = 'none'
+
+C(:,:,1) = rand(resolution + 1);
+C(:,:,2) = rand(resolution + 1);
+C(:,:,3) = rand(resolution + 1);
+
+saturn = surf(s_x, s_y, s_z, C)
+saturn.EdgeColor = 'none';
 
 
 % Saturn ring
@@ -48,24 +55,29 @@ saturn_ring = surf(sr_x, sr_y, sr_z, saturn_ring_texture);
 saturn_ring.EdgeColor = 'none'
 hold off;
 
-orbitAng = 1;
-satPos = [0,0,5; 0,0,0; 0,0,0];
+orbitAng = -1;
+satPos = [0,0,10;...
+          0,0,0;...
+          0,0,0];
+      
+i = 0;
 while 1
     rotate(earth, [0,0,1], 10, [0,0,0])
-    
-    % Umlauf
+    i = i + 1;
+    % Orbit
     rotate(saturn, [0,0,1], orbitAng, [0,0,0])
     rotate(saturn_ring, [0,0,1], orbitAng, [0,0,0])
     
-    % Eigenrotation
-    Rz = [cos(orbitAng) -sin(orbitAng) 0;...
-        sin(orbitAng) cos(orbitAng) 0;...
+    % Spin / Rotation
+    Rz = [cosd(orbitAng) -sind(orbitAng) 0;...
+          sind(orbitAng) cosd(orbitAng) 0;...
         0 0 1];
-    %satPos = Rz * satPos;
+    satPos = Rz * satPos
     
-    %rotate(saturn, [0,0,1], orbitAng*2, [satPos(1,3), satPos(2,3), satPos(3,3)])
-    %rotate(saturn_ring, [0,0,1], orbitAng*2, [satPos(1,3), satPos(2,3), satPos(3,3)])
-    drawnow
+    rotate(saturn, [0,0,1], orbitAng*2, [satPos(1,3), satPos(2,3), satPos(3,3)])
+    rotate(saturn_ring, [0,0,1], orbitAng*2, [satPos(1,3), satPos(2,3), satPos(3,3)])
+    %pause(0.001);
+    drawnow;
 end
 
   
