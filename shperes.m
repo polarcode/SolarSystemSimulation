@@ -1,5 +1,5 @@
 clear;
-figure;
+figure(1);
 title('Solar System');
 xlabel('X');
 ylabel('Y');
