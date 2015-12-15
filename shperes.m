@@ -31,7 +31,8 @@ C(:,:,1) = rand(resolution + 1);
 C(:,:,2) = rand(resolution + 1);
 C(:,:,3) = rand(resolution + 1);
 
-saturn = surf(s_x, s_y, s_z, C)
+saturn = surf(s_x, s_y, s_z, saturn_sphere_texture)
+%saturn = surf(s_x, s_y, s_z, C)
 saturn.EdgeColor = 'none';
 
 
@@ -64,6 +65,7 @@ i = 0;
 while 1
     rotate(earth, [0,0,1], 10, [0,0,0])
     i = i + 1;
+
     % Orbit
     rotate(saturn, [0,0,1], orbitAng, [0,0,0])
     rotate(saturn_ring, [0,0,1], orbitAng, [0,0,0])
