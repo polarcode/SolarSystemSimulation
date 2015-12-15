@@ -25,7 +25,7 @@ set(hi,'alphadata',.8)
 set(ha,'handlevisibility','off', ...
             'visible','off')
 
-resolution = 70;
+resolution = 50;
 
 %Sun light
 light('Position',[0 0 0],'Style','local');
@@ -35,8 +35,6 @@ lighting flat
 %material shiny
 material dull
 %material metal
-
-shading interp
 
 % Earth
 [e_x,e_y,e_z] = sphere(resolution);
@@ -96,10 +94,12 @@ satPos = [0,0,15;...
           0,0,0;...
           0,0,0];
       
+shading interp;
+      
 i = 0;
 while 1
     rotate(earth, [0,0,1], 10, [0,0,0])
-
+    
     % Orbit
     rotate(saturn, [0,0,1], orbitAng, [0,0,0])
     rotate(saturn_ring, [0,0,1], orbitAng, [0,0,0])
