@@ -1,6 +1,4 @@
 function [sun, earth, saturn, saturn_ring] = getUniverse(resolution)
-    universe = 1;
-    
     sun = getPlanet(resolution, 'imgs/sun.jpg', [0,0,0], [5,5,5]);
     sun.BackFaceLighting = 'reverselit';
     
