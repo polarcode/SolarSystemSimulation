@@ -31,11 +31,11 @@ lighting flat
 rotation_angle = 1; % a.k.a. speed
 resolution = 70;
 
-[sun, earth, saturn, saturn_ring] = getUniverse(resolution);
+[sun, earth, mars, saturn, saturn_ring] = getUniverse(resolution);
 
 % This kind of sucks...
 % it'd be nice if we could get this information from the surface object
-satPos = [0,0,20;...
+satPos = [0,0,40;...
           0,0,0;...
           0,0,0];
 
@@ -47,6 +47,7 @@ M_rot = [cosd(rotation_angle) -sind(rotation_angle) 0;...
 while 1
     % Orbit
     rotate(earth, [0,0,1], 10, [0,0,0])
+    rotate(mars, [0,0,1], 5, [0,0,0])
     
     rotate(saturn, [0,0,1], rotation_angle, [0,0,0])
     rotate(saturn_ring, [0,0,1], rotation_angle, [0,0,0])
@@ -57,5 +58,3 @@ while 1
 
     drawnow;
 end
-
-  
