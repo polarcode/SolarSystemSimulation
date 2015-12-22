@@ -1,13 +1,18 @@
-function [sun, earth, saturn, saturn_ring] = getUniverse(resolution)
+function [sun, earth, mars, saturn, saturn_ring] = getUniverse(resolution)
     sun = getPlanet(resolution, 'imgs/sun.jpg', [0,0,0], [5,5,5]);
     sun.BackFaceLighting = 'reverselit';
-    
+
     earth = getPlanet(resolution, 'imgs/earth2.jpg', [10,0,0], [1,1,1]);
     
-    saturn_pos = [20, 0, 0];
+    mars = getPlanet(resolution, 'imgs/mars.jpg', [15,0,0], [1,1,1]);
+
+    saturn_pos = [40, 0, 0];
     saturn = getPlanet(resolution, 'imgs/saturn-sphere.jpg', saturn_pos, [2,2,2]);
     saturn_ring = getRing(resolution, 'imgs/saturn-ring3.jpg', 3.5, 1, saturn_pos, [1,1,1/15]);
-    rotate(saturn_ring,[0 1 1],45,[20 0 0]);
+    rotate(saturn_ring,[0 1 1],45,saturn_pos);
+
+    material dull
+    shading interp
 end
 
 function planet = getPlanet(resolution , img, pos, scale)
