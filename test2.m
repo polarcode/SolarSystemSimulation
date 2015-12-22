@@ -1,22 +1,43 @@
+clear
 t = 0:pi/10:2*pi;
-figure
-[X,Y,Z] = sphere(30);
-asdf = surf(X,Y,Z)
-axis square
+figure(1)
+hold on
 axis([-5, 5, -5, 5, -5, 5])
-asdf.EdgeColor = 'none';
-rotate(asdf, [1,0,0], 90)
+grid on;
 
-%Sun light
-light('Position',[3 3 0],'Style','local');
-lighting flat
-%lighting gouraud
+[X1,Y1,Z1] = sphere(30);
+[X2,Y2,Z2] = sphere(30);
 
-%material shiny
+hg = hggroup;
+
+asdf1 = surf(X1,Y1,Z1,'parent',hg);
+asdf2 = surfl(X2+2,Y2+2,Z2);
+
+
+axis square
+
+% asdf1.EdgeColor = 'none';
+asdf1.BackFaceLighting = 'unlit'
+% asdf1.AmbientStrength = 0
+% asdf1.DiffuseStrength = 1
+asdf1.DiffuseStrength = 0.9
+%asdf2.EdgeColor = 'none';
+
+%light
+light('Position',[0,1,0],'Style','local','visible','on');
+%light('Position','camlight','Style','local','visible','on');
+% light('Position',[-1,-1,0],'Style','local','visible','on');
+% light('Position',[1,1,0],'Style','local','visible','on');
+% light('Position',[1,-1,0],'Style','local','visible','on');
+% light('Position',[0,0,1.1],'Style','local','visible','on');
+% light('Position',[0,0,-1.1],'Style','local','visible','on');
+lighting gouraud
+%lighting none
 %material dull
-%material metal
+
+shading interp
 
 while 1
-    rotate(asdf, [0,0,1], 1,[0.5,0,0])
+    rotate(asdf2, [0,0,1], 1,[0,0,0])
     drawnow
 end
