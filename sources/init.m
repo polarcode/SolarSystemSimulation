@@ -6,7 +6,7 @@ hold on;
 
 % Axis configuration
 xlabel('X'); ylabel('Y'); zlabel('Z');
-axis([-100, 100, -100, 100, -100, 100]);
+axis([-150, 150, -150, 150, -150, 150]);
 axis off;
 axis vis3d;
 
@@ -28,36 +28,39 @@ light('Position',[0 0 0],'Style','local');
 lighting flat
 
 % === start ===
-rotation_angle = 1; % a.k.a. speed
+speed = 10;
+rotation = 1;
 resolution = 70;
+AU = 10; % definition of one astronomical unit (distance earth to sun)
+radius = 10; % scale of size of planets (log10)
 
-[sun, earth, mars, saturn, saturn_ring] = getUniverse(resolution);
+[sun, earth, mars, saturn, saturn_ring] = getUniverse(AU, radius, resolution);
 
 material dull
 shading interp
 
 % This kind of sucks...
 % it'd be nice if we could get this information from the surface object
-satPos = [0,0,40;...
+satPos = [0,0,9.58*AU;...
           0,0,0;...
           0,0,0];
 
-M_rot = [cosd(rotation_angle) -sind(rotation_angle) 0;...
-        sind(rotation_angle) cosd(rotation_angle) 0;...
+M_rot_sat = [cosd((1/29.45)*speed) -sind((1/29.45)*speed) 0;...
+        sind((1/29.45)*speed) cosd((1/29.45)*speed) 0;...
         0 0 1];
 
 % Run simulation
 while 1
     % Orbit
-    rotate(earth, [0,0,1], 10, [0,0,0])
-    rotate(mars, [0,0,1], 5, [0,0,0])
+    rotate(earth, [0,0,1], speed, [0,0,0])
+    rotate(mars, [0,0,1], (1/1.88)*speed, [0,0,0])
     
-    rotate(saturn, [0,0,1], rotation_angle, [0,0,0])
-    rotate(saturn_ring, [0,0,1], rotation_angle, [0,0,0])
+    rotate(saturn, [0,0,1], (1/29.45)*speed, [0,0,0])
+    rotate(saturn_ring, [0,0,1], (1/29.45)*speed, [0,0,0])
     
     % Spin / Rotation
-    satPos = M_rot * satPos;
-    rotate(saturn_ring, [0,0,1], -rotation_angle, [satPos(1,3), satPos(2,3), satPos(3,3)])
+    satPos = M_rot_sat * satPos;
+    rotate(saturn_ring, [0,0,1], -(1/29.45)*rotation, [satPos(1,3), satPos(2,3), satPos(3,3)])
 
     drawnow;
 end
