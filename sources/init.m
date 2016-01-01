@@ -34,7 +34,7 @@ resolution = 70;
 AU = 10; % definition of one astronomical unit (distance earth to sun)
 radius = 10; % scale of size of planets (log10)
 
-[sun, earth, mars, saturn, saturn_ring] = getUniverse(AU, radius, resolution);
+[sun, mercury, venus, earth, mars, jupiter, saturn, saturn_ring, uranus, neptune] = getUniverse(AU, radius, resolution);
 
 material dull
 shading interp
@@ -52,15 +52,20 @@ M_rot_sat = [cosd((1/29.45)*speed) -sind((1/29.45)*speed) 0;...
 % Run simulation
 while 1
     % Orbit
+    rotate(mercury, [0,0,1], 4.1521*speed, [0,0,0])
+    rotate(venus, [0,0,1], 1.6255*speed, [0,0,0])
     rotate(earth, [0,0,1], speed, [0,0,0])
-    rotate(mars, [0,0,1], (1/1.88)*speed, [0,0,0])
+    rotate(mars, [0,0,1], 0.5317*speed, [0,0,0])
+    rotate(jupiter, [0,0,1], 0.0843*speed, [0,0,0])
     
-    rotate(saturn, [0,0,1], (1/29.45)*speed, [0,0,0])
-    rotate(saturn_ring, [0,0,1], (1/29.45)*speed, [0,0,0])
+    rotate(saturn, [0,0,1], 0.034*speed, [0,0,0])
+    rotate(saturn_ring, [0,0,1], 0.034*speed, [0,0,0])
     
     % Spin / Rotation
     satPos = M_rot_sat * satPos;
-    rotate(saturn_ring, [0,0,1], -(1/29.45)*rotation, [satPos(1,3), satPos(2,3), satPos(3,3)])
+    rotate(saturn_ring, [0,0,1], -0.034*rotation, [satPos(1,3), satPos(2,3), satPos(3,3)])
 
+    rotate(uranus, [0,0,1], 0.0119*speed, [0,0,0])
+    rotate(neptune, [0,0,1], 0.0061*speed, [0,0,0])
     drawnow;
 end
