@@ -1,12 +1,13 @@
 % === init view ===
 clear;
+clf();
 figure(1);
 title('Solar System');
 hold on;
 
 % Axis configuration
 xlabel('X'); ylabel('Y'); zlabel('Z');
-axis([-1500, 1500, -1500, 1500, -1500, 1500]);
+axis([-150, 150, -150, 150, -150, 150]);
 axis off;
 axis vis3d;
 
@@ -48,6 +49,7 @@ pos_saturn = [0,0,9.58*AU;...
 pos_earth = [0,0,AU;...
           0,0,0;...
           0,0,0];
+axis_earth = [cosd(66), 0, sind(66)];
 
 M_rot_sat = [cosd(0.034*speed) -sind(0.034*speed) 0;...
             sind(0.034*speed) cosd(0.034*speed) 0;...
@@ -63,21 +65,24 @@ while 1
     rotate(mercury, [0,0,1], 4.1521*speed, [0,0,0])
     rotate(venus, [0,0,1], 1.6255*speed, [0,0,0])
     rotate(earth, [0,0,1], speed, [0,0,0])
+    rotate(moon, [0,0,1], speed, [0,0,0])
     rotate(mars, [0,0,1], 0.5317*speed, [0,0,0])
     rotate(jupiter, [0,0,1], 0.0843*speed, [0,0,0])
     
     rotate(saturn, [0,0,1], 0.034*speed, [0,0,0])
     rotate(saturn_ring, [0,0,1], 0.034*speed, [0,0,0])
+    
+    rotate(uranus, [0,0,1], 0.0119*speed, [0,0,0])
+    rotate(neptune, [0,0,1], 0.0061*speed, [0,0,0])
 
     % Spin / Rotation
     pos_saturn = M_rot_sat * pos_saturn;
     rotate(saturn_ring, [0,0,1], -0.034*rotation, [pos_saturn(1,3), pos_saturn(2,3), pos_saturn(3,3)])
-
-    rotate(uranus, [0,0,1], 0.0119*speed, [0,0,0])
-    rotate(neptune, [0,0,1], 0.0061*speed, [0,0,0])
+    
+    pos_earth = M_rot_earth * pos_earth;
+    rotate(earth, axis_earth, 36*speed, [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)])
 
     % Moons
-    pos_earth = M_rot_earth * pos_earth;
     rotate(moon, [0,0,1], 13.3795*speed, [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)])
 
     drawnow;
