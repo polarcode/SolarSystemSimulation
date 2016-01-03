@@ -1,10 +1,10 @@
 function [sun, mercury, venus, earth, moon, mars, jupiter, saturn, saturn_ring, uranus, neptune] = getUniverse(AU, radius, resolution)
-    sun = getPlanet(resolution, 'imgs/sun.jpg', [0,0,0], log10(109.178*radius)*ones(1,3));
+    sun = getPlanet(2*resolution, 'imgs/sun.jpg', [0,0,0], log10(109.178*radius)*ones(1,3));
     mercury = getPlanet(resolution, 'imgs/mercury.jpg', [0.39*AU,0,0], log10(0.382*radius)*ones(1,3));
     venus = getPlanet(resolution, 'imgs/venus.jpg', [0.73*AU,0,0], log10(0.95*radius)*ones(1,3));
     
     earth_pos = [AU,0,0];
-    earth = getPlanet(resolution, 'imgs/earth2.jpg', earth_pos, log10(radius)*ones(1,3));
+    earth = getPlanet(5*resolution, 'imgs/earth2.jpg', earth_pos, log10(radius)*ones(1,3));
     rotate(earth, [0,1,0], 24, earth_pos);
     moon = getPlanet(resolution, 'imgs/moon.jpg', [(AU+log10(radius*0.27*radius)+(0.0025*AU)),0,0], log10(0.27*radius)*ones(1,3));
     
