@@ -1,11 +1,9 @@
 % === init view ===
 clear;
 figure(1);
-title('Solar System');
 hold on;
 
 % Axis configuration
-xlabel('X'); ylabel('Y'); zlabel('Z');
 axis([-150, 150, -150, 150, -150, 150]);
 axis off;
 axis vis3d;
@@ -21,6 +19,10 @@ hi = imagesc(I)
 set(hi,'alphadata',.9)
 % Turn the handlevisibility off so that we don't inadvertently plot into the axes again
 % Also, make the axes invisible
+
+text(50,50,'Solar System','Color','cyan','FontSize',12,'EdgeColor','cyan');
+t = text(50,120,['FPS: ',0],'Color',[0 1 1],'FontSize',10);
+
 set(ha,'handlevisibility','off', 'visible','off')
 
 % Sun light
@@ -30,7 +32,7 @@ lighting flat
 % === start ===
 speed = 10;
 rotation = 1;
-resolution = 70;
+resolution = 100;
 AU = 10; % definition of one astronomical unit (distance earth to sun)
 radius = 10; % scale of size of planets (log10)
 
@@ -51,6 +53,7 @@ M_rot_sat = [cosd((1/29.45)*speed) -sind((1/29.45)*speed) 0;...
 
 % Run simulation
 while 1
+    tic();
     % Orbit
     rotate(mercury, [0,0,1], 4.1521*speed, [0,0,0])
     rotate(venus, [0,0,1], 1.6255*speed, [0,0,0])
@@ -67,5 +70,10 @@ while 1
 
     rotate(uranus, [0,0,1], 0.0119*speed, [0,0,0])
     rotate(neptune, [0,0,1], 0.0061*speed, [0,0,0])
+    
     drawnow;
+ 
+    fps = num2str(round(1/toc()*10)/10);
+    t.String = ['FPS: ', fps];
+  
 end
