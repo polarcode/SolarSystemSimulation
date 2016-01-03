@@ -6,7 +6,7 @@ hold on;
 
 % Axis configuration
 xlabel('X'); ylabel('Y'); zlabel('Z');
-axis([-150, 150, -150, 150, -150, 150]);
+axis([-1500, 1500, -1500, 1500, -1500, 1500]);
 axis off;
 axis vis3d;
 
