@@ -16,8 +16,8 @@ ha = axes('units','normalized', 'position',[0 0 1 1]);
 uistack(ha,'bottom');
 % Load in a background image and display it using the correct colors
 I=imread('imgs/SpaceBackground.png');
-hi = imagesc(I)
-set(hi,'alphadata',.9)
+hi = imagesc(I);
+set(hi,'alphadata',.9);
 % Turn the handlevisibility off so that we don't inadvertently plot into the axes again
 % Also, make the axes invisible
 
@@ -33,7 +33,7 @@ lighting flat
 % === start ===
 speed = 1;
 rotation = 1;
-resolution = 100;
+resolution = 50;
 AU = 10; % definition of one astronomical unit (distance earth to sun)
 radius = 10; % scale of size of planets (log10)
 
@@ -87,11 +87,10 @@ while 1
 
     % Moons
     rotate(moon, [0,0,1], 13.3795*speed, [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)])
-
     
     drawnow;
  
-    fps = num2str(round(1/toc()*10)/10);
+    fps = num2str(round((1/toc())*10)/10);
     t.String = ['FPS: ', fps];
   
 end
