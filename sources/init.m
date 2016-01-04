@@ -26,8 +26,8 @@ text(50,50,'Solar System','Color','cyan','FontSize',12,'EdgeColor','cyan');
 fps_text = text(50,120,['FPS: ',0],'Color',[0 1 1],'FontSize',10);
 speed_text = uicontrol('Style', 'text', 'Position', [20, 45, 120, 20],...
     'String', 'Speed of simulation', 'ForegroundColor', [0 1 1], 'BackgroundColor', [0 0 0]);
-speed_slider = uicontrol('Style', 'slider', 'SliderStep', [1/30 1/30],...
-    'Min', 0, 'Max', 30, 'Value', 1, 'Position', [20 20 120 20]); 
+speed_slider = uicontrol('Style', 'slider', 'SliderStep', [1/80 1/80],...
+    'Min', 0, 'Max', 40, 'Value', 1, 'Position', [20 20 120 20]); 
 
 set(ha,'handlevisibility','off', 'visible','off')
 
@@ -38,11 +38,56 @@ lighting flat
 % === start ===
 AU = 10; % definition of one astronomical unit (distance earth to sun)
 radius = 10; % scale of size of planets (log10)
+resolution = 50;
+AmbSun = 0.83;
+AmbPlanets = 0.25;
+DiffStrPlanets = 1.0;
 
 [sun, mercury, venus, earth, moon, mars, jupiter, saturn, saturn_ring, uranus, neptune] = getUniverse(AU, radius, resolution);
 
-material dull
-shading interp
+%Doesn't work for some reason...
+%appearancePlanets(AmbSun, AmbPlanets, DiffStrPlanets);
+
+material dull               %planet reflects more diffuse light and has no specular highlights
+shading interp              %surfaces of planets won't be pixelated
+
+planetOrbits([0,0,0],[0,0,1],0.39*AU,'r-');
+planetOrbits([0,0,0],[0,0,1],0.73*AU,'r-');
+planetOrbits([0,0,0],[0,0,1],AU,'b-');
+planetOrbits([0,0,0],[0,0,1],1.38*AU,'r-');
+planetOrbits([0,0,0],[0,0,1],5.2*AU,'r-');
+planetOrbits([0,0,0],[0,0,1],9.58*AU,'y-');
+planetOrbits([0,0,0],[0,0,1],19.22*AU,'c-');
+planetOrbits([0,0,0],[0,0,1],30.1*AU,'c-');
+    
+sun.AmbientStrength = AmbSun;
+    
+mercury.AmbientStrength = AmbPlanets;
+mercury.DiffuseStrength = DiffStrPlanets;
+
+venus.AmbientStrength = AmbPlanets;
+venus.DiffuseStrength = DiffStrPlanets;
+
+earth.AmbientStrength = AmbPlanets;
+earth.DiffuseStrength = DiffStrPlanets;
+
+moon.AmbientStrength = AmbPlanets;
+moon.DiffuseStrength = DiffStrPlanets;
+
+mars.AmbientStrength = AmbPlanets;
+mars.DiffuseStrength = DiffStrPlanets;
+
+jupiter.AmbientStrength = AmbPlanets;
+jupiter.DiffuseStrength = DiffStrPlanets;
+
+saturn.AmbientStrength = AmbPlanets;
+saturn.DiffuseStrength = DiffStrPlanets;
+
+uranus.AmbientStrength = AmbPlanets;
+uranus.DiffuseStrength = DiffStrPlanets;
+
+neptune.AmbientStrength = AmbPlanets;
+neptune.DiffuseStrength = DiffStrPlanets;
 
 % This kind of sucks...
 % it'd be nice if we could get this information from the surface object

@@ -1,5 +1,5 @@
 function [sun, mercury, venus, earth, moon, mars, jupiter, saturn, saturn_ring, uranus, neptune] = getUniverse(AU, radius, resolution)
-    sun = getPlanet(2*resolution, 'imgs/sun.jpg', [0,0,0], log10(109.178*radius)*ones(1,3));
+    sun = getPlanet(5*resolution, 'imgs/sun.jpg', [0,0,0], log10(109.178*radius)*ones(1,3));
     mercury = getPlanet(resolution, 'imgs/mercury.jpg', [0.39*AU,0,0], log10(0.382*radius)*ones(1,3));
     venus = getPlanet(resolution, 'imgs/venus.jpg', [0.73*AU,0,0], log10(0.95*radius)*ones(1,3));
     
@@ -18,6 +18,7 @@ function [sun, mercury, venus, earth, moon, mars, jupiter, saturn, saturn_ring, 
 
     uranus = getPlanet(resolution, 'imgs/uranus.jpg', [19.22*AU,0,0], log10(4.01*radius)*ones(1,3));
     neptune = getPlanet(resolution, 'imgs/neptune.jpg', [30.1*AU,0,0], log10(3.88*radius)*ones(1,3));
+
 end
 
 function planet = getPlanet(resolution , img, pos, scale)
@@ -25,7 +26,7 @@ function planet = getPlanet(resolution , img, pos, scale)
     x = x*scale(1) + pos(1); y = y*scale(2) + pos(2); z = z*scale(3) + pos(3);
     
     texture = flipud(imresize(im2double(imread(img)),size(x)));
-    planet = surf(x, y, z, texture, 'EdgeColor', 'none');
+    planet = surf(x, y, z, texture,'EdgeColor', 'none');
 end
 
 function ring = getRing(resolution, img, radius, width, pos, scale)
