@@ -57,14 +57,14 @@ sun           = getSun(resolution*4,    'imgs/sun.jpg',           [0, 0, 0],    
 mercury       = getPlanet(resolution,   'imgs/mercury.jpg',       [0.39*AU, 0, 0], log10(0.382*radius)*ones(1,3), 0, [96, 96, 129]./255);
 venus         = getPlanet(resolution,   'imgs/venus.jpg',         [0.73*AU, 0, 0], log10(0.95*radius)*ones(1,3),  0, [198, 157, 91]./255);
 
-earth         = getPlanet(resolution*4, 'imgs/earth2.jpg',        [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)],   log10(radius)*ones(1,3),      24, [110, 155, 73]./255);
+earth         = getPlanet(resolution*4, 'imgs/earth.jpg',        [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)],   log10(radius)*ones(1,3),      24, [110, 155, 73]./255);
 moon          = getPlanet(resolution,   'imgs/moon.jpg',          [(AU+log10(radius*0.27*radius)+(0.0025*AU)), 0, 0], log10(0.27*radius)*ones(1,3) , 0, [0 0 0]);
 
 mars          = getPlanet(resolution,   'imgs/mars.jpg',          [1.38*AU, 0, 0], log10(0.533*radius)*ones(1,3), 0, [159, 117, 69]./255);
 jupiter       = getPlanet(resolution,   'imgs/jupiter.jpg',       [5.2*AU, 0, 0],  log10(11.21*radius)*ones(1,3), 0, [230, 190, 165]./255);
 
 saturn        = getPlanet(resolution,   'imgs/saturn-sphere.jpg', [pos_saturn(1,3), pos_saturn(2,3), pos_saturn(3,3)], log10(9.449*radius)*ones(1,3), 26, [208, 183, 152]./255);
-saturn_ring   = getRing(resolution,     'imgs/saturn-ring3.jpg', 3.5, 1, [pos_saturn(1,3), pos_saturn(2,3), pos_saturn(3,3)], [1,1,1/15], 26);
+saturn_ring   = getRing(resolution,     'imgs/saturn-ring.jpg', 3.5, 1, [pos_saturn(1,3), pos_saturn(2,3), pos_saturn(3,3)], [1,1,1/15], 26);
 
 uranus        = getPlanet(resolution,   'imgs/uranus.jpg',        [19.22*AU, 0, 0], log10(4.01*radius)*ones(1,3), 0, [135, 193, 215]./255);
 neptune       = getPlanet(resolution,   'imgs/neptune.jpg',       [30.1*AU, 0, 0],  log10(3.88*radius)*ones(1,3), 0, [60, 88, 185]./255);
