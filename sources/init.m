@@ -51,14 +51,14 @@ DiffStrPlanets = 1.0;
 material dull               %planet reflects more diffuse light and has no specular highlights
 shading interp              %surfaces of planets won't be pixelated
 
-planetOrbits([0,0,0],[0,0,1],0.39*AU,'r-');
-planetOrbits([0,0,0],[0,0,1],0.73*AU,'r-');
-planetOrbits([0,0,0],[0,0,1],AU,'b-');
-planetOrbits([0,0,0],[0,0,1],1.38*AU,'r-');
-planetOrbits([0,0,0],[0,0,1],5.2*AU,'r-');
-planetOrbits([0,0,0],[0,0,1],9.58*AU,'y-');
-planetOrbits([0,0,0],[0,0,1],19.22*AU,'c-');
-planetOrbits([0,0,0],[0,0,1],30.1*AU,'c-');
+planetOrbits([0,0,0],[0,0,1],0.39*AU,  [96, 96, 129]./255);
+planetOrbits([0,0,0],[0,0,1],0.73*AU,  [198, 157, 91]./255);
+planetOrbits([0,0,0],[0,0,1],AU,       [110, 155, 73]./255);
+planetOrbits([0,0,0],[0,0,1],1.38*AU,  [159, 117, 69]./255);
+planetOrbits([0,0,0],[0,0,1],5.2*AU,   [230, 190, 165]./255);
+planetOrbits([0,0,0],[0,0,1],9.58*AU,  [208, 183, 152]./255);
+planetOrbits([0,0,0],[0,0,1],19.22*AU, [135, 193, 215]./255);
+planetOrbits([0,0,0],[0,0,1],30.1*AU,  [60, 88, 185]./255);
     
 sun.AmbientStrength = AmbSun;
     
