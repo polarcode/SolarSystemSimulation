@@ -58,7 +58,8 @@ mercury       = getPlanet(resolution,   'imgs/mercury.jpg',       [0.39*AU, 0, 0
 venus         = getPlanet(resolution,   'imgs/venus.jpg',         [0.73*AU, 0, 0], log10(0.95*radius)*ones(1,3),  0, [198, 157, 91]./255);
 
 earth         = getPlanet(resolution*4, 'imgs/earth.jpg',        [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)],   log10(radius)*ones(1,3),      23.4, [110, 155, 73]./255);
-moon          = getPlanet(resolution,   'imgs/moon.jpg',          [(AU+log10(radius*0.27*radius)+(0.0025*AU)), 0, 0], log10(0.27*radius)*ones(1,3) , 0, [0 0 0]);
+moon          = getPlanet(resolution,   'imgs/moon.jpg',          [(AU+log10(radius*0.27*radius)+(0.0025*AU)), 0, 0], log10(0.27*radius)*ones(1,3) , 23.4, [0 0 0]);
+rotate(moon, [0,1,0], 23.4, [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)]);
 
 mars          = getPlanet(resolution,   'imgs/mars.jpg',          [1.38*AU, 0, 0], log10(0.533*radius)*ones(1,3), 0, [159, 117, 69]./255);
 jupiter       = getPlanet(resolution,   'imgs/jupiter.jpg',       [5.2*AU, 0, 0],  log10(11.21*radius)*ones(1,3), 0, [230, 190, 165]./255);
@@ -106,7 +107,7 @@ while 1
     rotate(earth, axis_earth, 36*speed, [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)])
 
     % Moons
-    rotate(moon, [0,0,1], 13.3795*speed, [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)])
+    rotate(moon, axis_earth, 13.3795*speed, [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)])
 
     drawnow;
 
