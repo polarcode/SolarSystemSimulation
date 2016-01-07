@@ -48,7 +48,7 @@ pos_saturn = [0, 0, 9.58*AU;...
 pos_earth = [0, 0, AU;...
              0, 0, 0;...
              0, 0, 0];
-axis_earth = [cosd(66), 0, sind(66)];
+axis_earth = [cosd(66.6), 0, sind(66.6)];
 
 
 % --- creating the planets ---
@@ -57,7 +57,7 @@ sun           = getSun(resolution*4,    'imgs/sun.jpg',           [0, 0, 0],    
 mercury       = getPlanet(resolution,   'imgs/mercury.jpg',       [0.39*AU, 0, 0], log10(0.382*radius)*ones(1,3), 0, [96, 96, 129]./255);
 venus         = getPlanet(resolution,   'imgs/venus.jpg',         [0.73*AU, 0, 0], log10(0.95*radius)*ones(1,3),  0, [198, 157, 91]./255);
 
-earth         = getPlanet(resolution*4, 'imgs/earth.jpg',        [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)],   log10(radius)*ones(1,3),      24, [110, 155, 73]./255);
+earth         = getPlanet(resolution*4, 'imgs/earth.jpg',        [pos_earth(1,3), pos_earth(2,3), pos_earth(3,3)],   log10(radius)*ones(1,3),      23.4, [110, 155, 73]./255);
 moon          = getPlanet(resolution,   'imgs/moon.jpg',          [(AU+log10(radius*0.27*radius)+(0.0025*AU)), 0, 0], log10(0.27*radius)*ones(1,3) , 0, [0 0 0]);
 
 mars          = getPlanet(resolution,   'imgs/mars.jpg',          [1.38*AU, 0, 0], log10(0.533*radius)*ones(1,3), 0, [159, 117, 69]./255);

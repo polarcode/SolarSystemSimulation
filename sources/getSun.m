@@ -1,4 +1,4 @@
-function sun = getSun(resolution, img, pos, scale, ambStrength)
+function sun = getSun(resolution, img, pos, scale)
     [x,y,z] = sphere(resolution);
     x = x*scale(1) + pos(1); y = y*scale(2) + pos(2); z = z*scale(3) + pos(3);
     
