@@ -4,10 +4,11 @@ function sun = getSun(resolution, img, pos, scale)
     
     texture = flipud(imresize(im2double(imread(img)),size(x)));
     sun = surf(x, y, z, texture,'EdgeColor', 'none');
-
-    sun.AmbientStrength = 0.85;
-
-    % Sun light
+    
+     % Sun light
     light('Position', pos,'Style', 'local');
     lighting flat;
+    
+    sun.AmbientStrength = 0.85;
+    
 end

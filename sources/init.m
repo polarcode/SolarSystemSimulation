@@ -2,12 +2,14 @@
 clear;
 clf();
 figure(1);
+tic();
 hold on;
 
 % Axis configuration
 axis([-310, 310, -310, 310, -310, 310]);
 axis off;
 axis vis3d;
+
 
 % Background
 % This creates the 'background' axes
@@ -32,9 +34,6 @@ speed_slider = uicontrol('Style', 'slider', 'SliderStep', [1/80 1/80],...
 set(ha, 'handlevisibility', 'off', 'visible', 'off')
 
 
-material dull               %planet reflects more diffuse light and has no specular highlights
-shading interp              %surfaces of planets won't be pixelated
-
 % === start ===
 AU = 10;                    % definition of one astronomical unit (distance earth to sun)
 radius = 10;                % scale of size of planets (log10)
@@ -50,9 +49,8 @@ pos_earth = [0, 0, AU;...
              0, 0, 0];
 axis_earth = [cosd(66.6), 0, sind(66.6)];
 
-
 % --- creating the planets ---
-sun           = getSun(resolution*4,    'imgs/sun.jpg',           [0, 0, 0],       log10(109.178*radius)*ones(1,3));
+sun           = getSun(resolution*3,    'imgs/sun.jpg',           [0, 0, 0],       log10(109.178*radius)*ones(1,3));
 
 mercury       = getPlanet(resolution,   'imgs/mercury.jpg',       [0.39*AU, 0, 0], log10(0.382*radius)*ones(1,3), 0, [96, 96, 129]./255);
 venus         = getPlanet(resolution,   'imgs/venus.jpg',         [0.73*AU, 0, 0], log10(0.95*radius)*ones(1,3),  0, [198, 157, 91]./255);
@@ -70,9 +68,10 @@ saturn_ring   = getRing(resolution,     'imgs/saturn-ring.jpg', 3.5, 1, [pos_sat
 uranus        = getPlanet(resolution,   'imgs/uranus.jpg',        [19.22*AU, 0, 0], log10(4.01*radius)*ones(1,3), 0, [135, 193, 215]./255);
 neptune       = getPlanet(resolution,   'imgs/neptune.jpg',       [30.1*AU, 0, 0],  log10(3.88*radius)*ones(1,3), 0, [60, 88, 185]./255);
 
+shading interp;              %surfaces of planets won't be pixelated
+
 % --- Run simulation ---
 while 1
-    tic();
     
     speed = get(speed_slider, 'Value');
     M_rot_sat = [cosd(0.034*speed), -sind(0.034*speed), 0;...
@@ -97,7 +96,7 @@ while 1
     rotate(neptune, [0,0,1], 0.0061*speed, [0,0,0])
 
     % Spin / Rotation
-    rotate(sun, [0,0,1], 40*speed, [0,0,0])
+    rotate(sun, [0,0,1], speed/2, [0,0,0])
 
     pos_saturn = M_rot_sat * pos_saturn;
     rotate(saturn, [0,0,1], -0.034*speed, [pos_saturn(1,3), pos_saturn(2,3), pos_saturn(3,3)])
@@ -112,5 +111,6 @@ while 1
     drawnow;
 
     fps = num2str(round((1/toc())*10)/10);
+    tic();
     fps_text.String = ['FPS: ', fps];
 end
