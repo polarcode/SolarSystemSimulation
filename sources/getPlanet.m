@@ -6,9 +6,10 @@ function planet = getPlanet(resolution, imgFile, pos, scale, tiltD, orbitColor)
     planet = surf(x, y, z, texture,'EdgeColor', 'none');
 
     rotate(planet, [0,1,0], tiltD, [pos]);
-
-    planet.AmbientStrength = 0.25;
+    
+    planet.AmbientStrength = 0.20;
     planet.DiffuseStrength = 1.0;
+    planet.SpecularStrength = 0.0;
 
     if norm(orbitColor) > 0
         getPlanetOrbit([0,0,0], [0,0,1], norm(pos), orbitColor);
