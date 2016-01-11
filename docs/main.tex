@@ -1,0 +1,39 @@
+%---------------------------------------------------------------------------
+\documentclass[
+	a4paper,				% paper format
+	10pt,					% fontsize 
+	oneside,				% double-sided
+	parskip=half,		% set paragraph skip to half of a line
+]{style}						% style class
+%---------------------------------------------------------------------------
+
+% === doc details ===
+
+\def\mytitle{Solar System Simulation}
+\def\mytitlepicture{imgs/example_small.jpg} % title imagecd
+\def\titlepicturelength{1\textwidth} % width of the image
+\def\untertitle{Simulation of our solar system}
+\def\type{Applications of Matlab/Octave}
+\def\myname{Eric Lochmatter, Lukas Studer}
+\def\myfield{Micro- and Medicaltechnology}
+\def\mydate{06. 01. 2016}
+\def\myabstract{{\em MatLab} and {\em Octave} are very versatile programs. To explore the possibilities, we created a simulation of our solar system using {\em MatLab}. bla bla bla realism, bla bla bla to scale and some shit about not elipsies but circles}
+
+
+% ------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle %title
+\frontmatter
+\tableofcontents\thispagestyle{toc}
+\mainmatter
+
+
+% === main content ===
+\input{inputfiles/Introduction.tex}
+\input{inputfiles/Realism.tex}
+\input{inputfiles/UI_elements.tex}
+\input{inputfiles/Rotation.tex}
+
+\end{document}

@@ -8,6 +8,6 @@ Trajectories are not calculated and the orbits are perfect circles, due to the s
 
 This is what it looks like:
 
-![Example Image](docs/Example.jpg)
+![Example Image](docs/imgs/example.jpg)
 
 (It’s called 'Solar System Simulation’ because it just has a better ring to it than 'Solar System Model'...)

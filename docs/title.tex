@@ -1,0 +1,50 @@
+\renewcommand{\maketitle}{
+
+\thispagestyle{titlepage}
+\begin{textblock}{20}[0,0](28,12)
+%	\includegraphics[scale=1.0]{imgs/placeholder.png}\\
+\end{textblock}
+
+\begin{textblock}{154}(28,30)
+\begin{center}
+{\color{grey}\rule{\titlepicturelength}{0mm}}\\[-0.05cm]
+\includegraphics[scale=0.30]{\mytitlepicture}\\[-0.355cm]
+{\color{grey}\rule{\titlepicturelength}{0mm}}
+\end{center}
+\vspace*{1cm}
+\color{black}
+\end{textblock}
+
+\vspace*{115mm}
+
+\begin{flushleft}
+\color{grey}
+\fontsize{26pt}{28pt}\selectfont 
+\mytitle\\									
+\vspace{2mm}
+\fontsize{16pt}{20pt}\selectfont\vspace{0.3em}
+\untertitle 			\\							
+\vspace{5mm}
+\fontsize{10pt}{12pt}\selectfont
+\textbf{\type} \\								
+\vspace{3mm}
+\color{black}
+\end{flushleft}
+
+\begin{textblock}{150}(28,190)
+\fontsize{10pt}{12pt}\selectfont \myabstract
+\end{textblock}
+
+
+\begin{textblock}{154}(28,240)
+\fontsize{10pt}{17pt}\selectfont
+\begin{tabbing}
+xxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \kill
+Studiengang:	\> \myfield	\\		
+Autoren:		\> \myname		\\					
+Datum: \> \mydate					
+\end{tabbing}
+
+\end{textblock}
+
+}
