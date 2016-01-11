@@ -19,18 +19,19 @@ uistack(ha,'bottom');
 % Load in a background image and display it using the correct colors
 I=imread('imgs/SpaceBackground.png');
 hi = imagesc(I);
+%Transparency of Background
 set(hi,'alphadata',.9);
-% Turn the handlevisibility off so that we don't inadvertently plot into the axes again
-% Also, make the axes invisible
 
 % UI
-text(50, 50, 'Solar System', 'Color', 'cyan', 'FontSize', 12, 'EdgeColor', 'cyan');
-fps_text = text(50, 120, ['FPS: ', 0], 'Color', [0 1 1], 'FontSize', 10);
-speed_text = uicontrol('Style', 'text', 'Position', [20, 45, 120, 20],...
-    'String', 'Speed of simulation', 'ForegroundColor', [0 1 1], 'BackgroundColor', [0, 0, 0]);
+text(50, 50, 'Solar System', 'Color', 'cyan', 'FontSize', 13, 'EdgeColor', 'cyan');
+fps_text = text(50, 120, ['FPS: ', 0], 'Color', 'cyan', 'FontSize', 10);
+speed_text = uicontrol('Style','Text','Position', [20, 45, 120, 20],...
+     'String', 'Speed of simulation', 'ForegroundColor', [0 1 1], 'BackgroundColor', 'none');
 speed_slider = uicontrol('Style', 'slider', 'SliderStep', [1/100 1/100],...
-    'Min', 0, 'Max', 40, 'Value', 1, 'Position', [20, 20, 120, 20]); 
+    'Min', 0, 'Max', 40, 'Value', 1, 'Position', [20, 20, 120, 20]);
 
+% Turn the handlevisibility off so that we don't inadvertently plot into the axes again
+% Also, make the axes invisible
 set(ha, 'handlevisibility', 'off', 'visible', 'off');
 
 
@@ -71,7 +72,7 @@ saturn_ring           = getRing(resolution/3,   'imgs/saturn-ring.jpg', 3.5, 1, 
 [uranus,o_uranus]     = getPlanet(resolution,   'imgs/uranus.jpg',        [19.22*AU, 0, 0], log10(4.01*radius)*ones(1,3), 0, [135, 193, 215]./255);
 [neptune, o_neptune]  = getPlanet(resolution,   'imgs/neptune.jpg',       [30.1*AU, 0, 0],  log10(3.88*radius)*ones(1,3), 0, [60, 88, 185]./255);
 
-lgnd = legend([o_mercury,o_venus,o_earth,o_moon,o_mars,o_jupiter,o_saturn,o_uranus,o_neptune],...
+lgnd = legend(ha,[o_mercury,o_venus,o_earth,o_moon,o_mars,o_jupiter,o_saturn,o_uranus,o_neptune],...
  {'Mercury','Venus','Earth','Moon','Mars','Jupiter','Saturn', 'Uranus', 'Neptune'},...
  'Position',[0.85,0.05,0.1,0.3],'TextColor','cyan','EdgeColor','cyan','Box','on');
 lgnd.Color = 'none';
