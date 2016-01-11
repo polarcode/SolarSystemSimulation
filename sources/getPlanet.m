@@ -1,4 +1,4 @@
-function planet = getPlanet(resolution, imgFile, pos, scale, tiltD, orbitColor)
+function [planet,orbit] = getPlanet(resolution, imgFile, pos, scale, tiltD, orbitColor)
     [x,y,z] = sphere(resolution);
     x = x*scale(1) + pos(1); y = y*scale(2) + pos(2); z = z*scale(3) + pos(3);
     
@@ -12,6 +12,6 @@ function planet = getPlanet(resolution, imgFile, pos, scale, tiltD, orbitColor)
     planet.SpecularStrength = 0.0;
 
     if norm(orbitColor) > 0
-        getPlanetOrbit([0,0,0], [0,0,1], norm(pos), orbitColor);
+        orbit = getPlanetOrbit([0,0,0], [0,0,1], norm(pos), orbitColor);
     end
 end
