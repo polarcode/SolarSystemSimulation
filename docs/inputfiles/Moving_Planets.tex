@@ -1,5 +1,15 @@
 \chapter{Moving the Planets}
+The decision to use circular orbits also influenced how we moved the planets in out modle. We were able to use the {\em rotate} function from \matlab{}. This function allows us to rotate the objects by a number of degrees around a vector at a given position. Due to the flexibility, we can use this function for all the movement in the modle. This includes the movement along the orbit, the spin of planets and keeping the rotation axis of planets aligned.\\
 
-\section{Rotation}
+To animate the modle, we move all objects using the {\em rotate} function and then refresh the graph. We defined this to be one tick. This way of animating the modle may be very simple, but proved to have some unpleasant side effects as described below.
 
-\section{The Problem with Rotation Angles}
+\section{Earth's Spin}
+We defined the {\em 'normal'} speed of the modle to be so that the earth rotates one degree around the sun per tick. This means that it takes earth 360 ticks to complete one year's worth of rotation. This on the other hand means that, rounding the number for this explanation, earth has to rotate once around itself per tick. This would result in, again rounding the numbers, 365 earth days per earth year which, as we all know, would be correct. Using the {\em rotate} function to rotate earth 360 degrees around itself per tick, results in no visible spin of earth. Using the real numbers would still result in only a very slow spin, due to the fact that it rotates a bit more than 360 degrees per tick\\
+
+We {\em solved} this problem by giving earth an arbitrary speed of rotation around itself.
+
+
+\section{Increased Speed}
+Basically the same problem occurs when increasing the speed of the animation using the slider. As described in the chapter {\em UI Elements}, the slider only increases the angle of rotation. Setting the speed to higher values leads to visual effects similar to those of aliasing. The basic principle of aliasing is that the sample rate of the measuring device is to slow for what it is measuring, which leads to distorted results. In our case, we generate to few steps to create a smooth animation. This makes planets jump, rather than smoothly move, and rotate clockwise rather than counter clockwise. As a simple example, if  the rotation angle is set to 90 degrees earth would jump three times before returning to its starting position. This is drastically different to the 360 steps earth makes at normal speed. \\
+
+As already the one above, we weren't able to fix the problem and could only restrict the maximum speed, which works for the planets in the outer solar system but not so much for the planets closer to the sun.

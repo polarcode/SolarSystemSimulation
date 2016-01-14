@@ -52,7 +52,7 @@ The rest for drawing the ring is the same as for drawing the planets: we move an
 
 
 \section{\textcolor{red}{Orbits}}
-Drawing the trajectory of the planets was made a lot easier when we decided to use circles as orbits instead of calculating them.
+We decided to use circular orbits for our modle, instead of simulating them and calculating the trajectory. Thus drawing the trajectory of each planet was made a lot easier. 
 
 \begin{framed}\begin{verbatim}
 theta = 0:0.01:(2*pi+0.01);
@@ -61,6 +61,7 @@ points = repmat(center',1,size(theta,2))+radius*(v(:,1)*cos(theta)+v(:,2)*sin(th
 orbit = plot3(points(1,:),points(2,:),points(3,:),'Color',color);
 \end{verbatim}\end{framed}
 
+% ================================
 \pagebreak
 \section{Key Values for the Modle}
 As said before, we tryed to use realistic values and scales for the modle. Listed in the following two chapters are the values we ended up using.
