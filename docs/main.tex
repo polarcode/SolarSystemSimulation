@@ -7,18 +7,19 @@
 ]{style}						% style class
 %---------------------------------------------------------------------------
 
-% === doc details ===
+\def\matlab{{\em MatLab}}
+\def\octave{{\em Octave}}
 
+% === doc details ===
 \def\mytitle{Solar System Simulation}
 \def\mytitlepicture{imgs/example_small.jpg} % title imagecd
 \def\titlepicturelength{1\textwidth} % width of the image
 \def\untertitle{Simulation of our solar system}
-\def\type{Applications of Matlab/Octave}
+\def\type{Applications of \matlab{}/\octave{}}
 \def\myname{Eric Lochmatter, Lukas Studer}
 \def\myfield{Micro- and Medicaltechnology}
 \def\mydate{06. 01. 2016}
-\def\myabstract{{\em MatLab} and {\em Octave} are very versatile programs. To explore the possibilities, we created a simulation of our solar system using {\em MatLab}. bla bla bla realism, bla bla bla to scale and some shit about not elipsies but circles}
-
+\def\myabstract{\matlab{} and \octave{} are very versatile programs. To explore the possibilities, we created a simulation of our solar system using \matlab{}. bla bla bla realism, bla bla bla to scale and some shit about not elipsies but circles}
 
 % ------------------------------------------------------------------------
 
@@ -32,8 +33,9 @@
 
 % === main content ===
 \input{inputfiles/Introduction.tex}
-\input{inputfiles/Realism.tex}
+\input{inputfiles/Drawing_Planets_Orbits.tex}
+\input{inputfiles/Moving_Planets.tex}
 \input{inputfiles/UI_elements.tex}
-\input{inputfiles/Rotation.tex}
+\input{inputfiles/Appendix.tex}
 
 \end{document}

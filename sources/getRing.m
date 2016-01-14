@@ -2,7 +2,7 @@ function ring = getRing(resolution, img, radius, width, pos, scale, tiltD)
     phi = linspace(0,2*pi,resolution)';
     alpha = linspace(0,2*pi,resolution*10)';
 
-    tmp=[radius + width*cos(phi), width*sin(phi)];
+    tmp = [radius + width*cos(phi), width*sin(phi)];
     x = cos(alpha)*tmp(:,1)';
     y = sin(alpha)*tmp(:,1)';
     z = tmp(:,2)';
