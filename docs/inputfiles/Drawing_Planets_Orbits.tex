@@ -51,8 +51,15 @@ z = z(ones(1,length(alpha)),:);
 The rest for drawing the ring is the same as for drawing the planets: we move and scale the ring using vectors containing the position of the center and factors for each direction and then create a surface object with the textures of the ring. Only the textures are slightly different compared to the planets. While the planets use a map, the ring has to be only a portion of the ring mirrored along the inner {\em 'edge'} of the ring.
 
 
-\section{\textcolor{red}{Orbits}}
-We decided to use circular orbits for our modle, instead of simulating them and calculating the trajectory. Thus drawing the trajectory of each planet was made a lot easier. 
+\section{Orbits}
+We decided to use circular orbits for our modle, instead of simulating them and calculating the trajectory. Thus drawing the trajectory of each planet was made a lot easier.  The function {\em getPlanetOrbit} draws a simple circle in a 3 dimensional room. The function has the following attributes:
+\begin{itemize}
+  \item Center: stands for the middle of the circle
+  \item Normal: stands for direction that the circle is tilted
+  \item Radius: radius of the circle
+  \item Color: color of the circle \ldots
+\end{itemize}
+
 
 \begin{framed}\begin{verbatim}
 theta = 0:0.01:(2*pi+0.01);

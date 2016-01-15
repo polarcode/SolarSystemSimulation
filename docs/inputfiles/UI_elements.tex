@@ -5,9 +5,12 @@ The modle provides three UI elements for the user, besides the common controls f
 \section{FPS Display}
 While programming the modle we soon realized that the certain changes had a massive impact on the number of frames {\em MatLab} could render per second. The number of frames per second, also known as {\em FPS} directly dictates how smooth the modle runs. Through time analysis of the modle we found out that the resolution of the planets, sun, and moon had the most noticeable impact on the {\em FPS.} We then added the display to find the optimal resolution at which the graphics of the planets didn't suffer to much but still allowed for a smooth animation. We settled for a resolution of 50. This keeps the {\em FPS} at around 20 which is only slightly lower than the number images the human eye can capture per second. This makes the animation appear smooth.\\
 
-\textcolor{red}{CALCULATION OF FPS}
+With the help of the command tic() and toc() we measure the time need for one while loop or one tick. If we take the inverse of the measured time we get the frames rendered per second. We then round the value to 2 decimals places and finally convert the numerical value into a string which is then ploted to the graphical window. Following code does the trick:
+
 \begin{framed}\begin{verbatim}
-Some code
+fps = num2str(round((1/toc())*10)/10);
+tic();
+fps_text.String = ['FPS: ', fps];
 \end{verbatim}\end{framed}
 
 
