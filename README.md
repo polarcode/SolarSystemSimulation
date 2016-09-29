@@ -1,6 +1,6 @@
 # SolarSystemSimulation
 
-This is a simple model of our solar system written in MatLab. The code may work in Octave but compatibility is not guarantied.
+This is a simple model of our solar system written in MatLab. The code may work in Octave but compatibility is not guaranteed.
 
 With the release of version 1.0.0 we stoped active development of the project. Of course we didn't completely abandon the project, so, if you need anything just tell us (issue, pullrequest or whatever) and we'll see to it.
 
